@@ -1,0 +1,144 @@
+
+.chat-screen {
+    display: flex;
+    margin-top: 38px;
+}
+
+.chat-screen>* {
+    height: calc(100vh - 38px);
+}
+
+.conversation-list {
+    width: 25%;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+    max-height: 495px;
+    border: 1px solid #ffffff2c;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #ffffff2c;
+}
+
+.conversation-list>#add-conversation-container {
+    position: absolute;
+    bottom: 28px;
+}
+
+.conversation-list ul li {
+    display: block;
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.conversation-list .active-conversation {
+    background: #e2e1e1;
+}
+
+.conversation-list ul li:hover {
+    cursor: pointer;
+    background: #e2e1e1;   
+}
+
+.chat-container {
+    padding: 0px 50px;
+    width: 50%;
+    min-width: 400px;
+    /* background-image: url(../images/chat-background.jpg); */
+    /* background-size: cover; */
+}
+
+.conversation-details {
+    width: 25%;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+    max-height: 495px;
+    border: 1px solid #ffffff2c;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #ffffff2c;
+}
+
+.conversation-details>#leave-conversation-btn {
+    position: absolute;
+    bottom: 28px;
+}
+
+.conversation-details span {
+    font-style: italic;
+}
+
+.chat-header {
+    font-size: 32px;
+    text-align: center;
+    color: #788195;
+    margin-bottom: 50px;
+    text-shadow: 0.5px 0.5px #ffffff;
+}
+
+.chat-content {
+    min-height: 390px;
+    max-height: 390px;
+    border: 1px solid #ffffff2c;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #ffffff2c;
+    word-wrap: break-word;
+    margin-bottom: 28px;
+}
+
+.chat-content .chat-message {
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.chat-content .chat-message span {
+    font-size: 13px;
+    padding: 10px;
+    background: #fca280;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.chat-content .your {
+    text-align: right;
+}
+
+.chat-content .your span {
+    background: #4527a4;
+}
+
+.chat-container form {
+    display: flex;
+}
+
+.chat-container form .input-wrapper {
+    width: calc(100% - 140px);
+    margin-right: 20px;
+}
+
+
+/* fix height sau đó overflow: scroll
+position: fixed */
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
