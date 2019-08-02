@@ -27,13 +27,11 @@ view.register = function () {
         } else {
             view.setText(config.ERROR_FIRSTNAME_ID, '')
         }
-        // if (!validateLastName(registerInfo.lastname)) {
-        if (!registerInfo.lastname) { // !registerInfo.lastname : mạnh hơn (ktra cả trường hợp = null || "" || underf 
+        if (!registerInfo.lastname) {
             view.setText(config.ERROR_LASTNAME_ID, 'Invalid lastname!')
         } else {
             view.setText(config.ERROR_LASTNAME_ID, '')
         }
-        // if (registerInfo.email == '') {
         if (!registerInfo.email) {
             view.setText(config.ERROR_EMAIL_ID, 'Invalid email!')
         } else {
@@ -49,16 +47,13 @@ view.register = function () {
         } else {
             view.setText(config.ERROR_CONFIRM_PWD_ID, '')
         }
-        // TODO
         if (validateRegisterInfo(registerInfo)) {
-            // console.log(validateRegisterInfo(registerInfo))
-            // do register
             controller.register(registerInfo)
         }
     }
 }
 
-view.logIn = function() {
+view.logIn = function () {
     document.getElementById('app').innerHTML = components.logIn
     let link = document.getElementById('form-link')
     let button = document.getElementById('form-btn')
@@ -69,7 +64,7 @@ view.logIn = function() {
         view.showComponents('register')
     }
 
-    function buttonClickHandler(e) { // e or event
+    function buttonClickHandler(e) {
         e.preventDefault()
         let form = document.getElementById(config.FORM_LOG_IN_ID)
         let logInInfo = {
@@ -78,10 +73,8 @@ view.logIn = function() {
         }
 
         if (!logInInfo.email) {
-            // document.getElementById(config.ERROR_EMAIL_ID).innerText = 'Invalid email!'
             view.setText(config.ERROR_EMAIL_ID, 'Invalid email!')
         } else {
-            // document.getElementById(config.ERROR_EMAIL_ID) = ''
             view.setText(config.ERROR_EMAIL_ID, '')
         }
 
@@ -90,34 +83,158 @@ view.logIn = function() {
         } else {
             view.setText(config.ERROR_PWD_ID, '')
         }
-        // TODO
         if (validateLogInInfo(logInInfo)) {
-            // do log in 
             controller.logIn(logInInfo)
         }
     }
 }
 
-// /**
-//  *  @return true |false
-//  *  @param {String} email
-//  */
+view.userInfo = function myFunction() {
+    document.getElementById('app').innerHTML = components.userInfo
 
-// function validateEmail(email) {
-//     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(String(email).toLowerCase());
+    let btn = document.getElementById('form-info-btn')
+    let type = document.getElementById("user-detail")
+    type.onchange = myFunction
+    btn.onclick = buttonClickHandler
+    function myFunction() {
+        var x = document.getElementById("user-detail")
+
+        var list = document.getElementById('user-form')
+        if (x.value == 'employer') {
+            let html = `<div class="form-group">
+                    <input type="text" class="form-control" name="companyname" placeholder="Company name" required>
+                    <div></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email" required>
+                        <div></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="introduction" placeholder="Introduction" required>
+                        <div></div>
+                    </div>
+                    `
+            list.innerHTML = html
+        } else if (x.value == 'DEV') {
+            let html = `<div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                </div>
+                <select name="" class="custom-select" id="job-detail">
+                    <option value="">Job</option>
+                    <option value="tester">Tester</option>
+                    <option value="fullstack">Fullstack</option>
+                    <option value="frontend">Frontend</option>
+                    <option value="backend">Backend</option>
+                    <option value="game">Game</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="schoolname" placeholder="School name" required>
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="major" placeholder="Major" required>
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="awards" placeholder="Awards" required>
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="job" placeholder="Job" required>
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="company" placeholder="Company" required>
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="from" value="1980-08-26">
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="to" required>
+                <div></div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="achievements" placeholder="Achievements" required>
+                <div></div>
+            </div>
+            `
+            list.innerHTML = html
+        }
+    }
+    function buttonClickHandler(e) {
+        e.preventDefault()
+        let form = document.getElementById(config.FORM_REGISTER_ID)
+        let z = document.getElementById('job-detail')
+        let type = document.getElementById("user-detail")
+
+        if (type.value == "DEV") {
+            let DEVinfo = {
+                createdAt: new Date().toISOString(),
+                owner: firebase.auth().currentUser.email,
+                type: 'DEV',
+                informations: {
+                    education: {
+                        schoolname: form.schoolname.value,
+                        major: form.major.value,
+                        awards: form.awards.value,
+                    },
+                    experience: {
+                        achievements: form.achievements.value,
+                        company: form.company.value,
+                        from: form.from.value,
+                        job: form.job.value,
+                        to: form.to.value,
+                    },
+                    job: z.value
+                }
+            }
+            firebase.firestore().collection('users').add(DEVinfo)
+        } else {
+            let employerInfo = {
+                createdAt: new Date().toISOString(),
+                owner: firebase.auth().currentUser.email,
+                type: 'employer',
+                informations: {
+                    company_name: form.companyname.value,
+                    email: form.email.value,
+                    introduction: form.introduction.value
+                }
+            }
+            firebase.firestore().collection('users').add(employerInfo)
+        }
+    }
+}
+
+// view.employerInfo = function() {
+//     document.getElementById('app').innerHTML = components.userInfo
+
+//     let btn = document.getElementById('form-info-btn')
+//     let type = document.getElementById('x').value
+//     view.showComponents('employerInfo')
+//     btn.onclick = function (e) {
+//         e.preventDefault()
+//         let type = document.getElementById("x").value
+//         let form = document.getElementById(config.FORM_REGISTER_ID)
+//         let x = document.getElementById('job-detail')
+//         let employerInfo = {
+//             createdAt: new Date().toISOString(),
+//             owner: firebase.auth().currentUser.email,
+//             type: type,
+//             informations: {
+//                 company_name: form.companyname.value,
+//                 email: form.email.value,
+//                 introductions: form.introduction.value
+//             }
+//         }
+//         firebase.firestore().collection('users').add(employerInfo)
+//     }
+
 // }
 
-// function validatePassword(password) {
-//     var re = /^[0-9a-zA-Z]{8,}$/;
-//     return re.test(String(password).toLowerCase());
-// }
-
-/**
- * @returns true if all register valid
- * @returns else false
- * @param {Object} registerInfo : email, firstname, lastname, password, confirmPassword
- */
 function validateRegisterInfo(registerInfo) {
     return registerInfo.email
         && registerInfo.password
@@ -126,11 +243,7 @@ function validateRegisterInfo(registerInfo) {
         && registerInfo.confirmPassword == registerInfo.password
 }
 
-/**
- * @returns true if all login valid
- * @returns else false
- * @param {Object} loginInfo : email, firstname,
- */
+
 function validateLogInInfo(logInInfo) {
     return logInInfo.email
         && logInInfo.password

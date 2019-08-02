@@ -17,18 +17,7 @@ const config = {
 
     MESSAGE_ERROR_ID: 'message-error',
     MESSAGE_SUCCESS_ID: 'message-success',
+ 
+    STARTED_BTN_ID : 'started-btn'    
 
-    CHAT_CONTENT: 'chat-content',
-    CONVERSATION_LIST_ID: 'conversation-list',
-    CONVERSATION_DETAILS_ID: 'conversation-details',    
-    
-    NAV_NAME_LABEL: 'name-label',
-    NAV_SIGN_OUT_BTN: 'sign-out-btn',
-    ADD_CONVERSATION_BTN: 'add-conversation-btn',
-    LEAVE_CONVERSATION_BTN: 'leave-conversation-btn',
-    ADD_CONVERSATION_CONTAINER_ID: 'add-conversation-container',
-    ADD_CONVERSATION_FORM_ID: 'add-conversation-form',
-    ADD_CONVERSATION_CANCEL_BTN_ID: 'add-conversation-cancel-btn',
-    ADD_CONVERSATION_SUBMIT_BTN_ID: 'add-conversation-cancel-btn',
-    ADD_CONVERSATION_ERROR_ID: 'add-conversation-error'
 }

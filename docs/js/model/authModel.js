@@ -3,3 +3,5 @@ models.logIn = function (authUser) {
     models.conversations = null
     models.currentActiveConversation = null
 }
+
+
