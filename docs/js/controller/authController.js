@@ -1,4 +1,4 @@
-controller.register = async function (registerInfo) { 
+controller.register = async function (registerInfo) {
     if (validateRegisterInfo(registerInfo)) {
         try {
             let resultCreateUser = await window.firebase.auth().createUserWithEmailAndPassword(
@@ -9,9 +9,10 @@ controller.register = async function (registerInfo) {
             })
 
             firebase.auth().currentUser.sendEmailVerification()
+            view.showComponents('noti')
+            setTimeout(function () { view.showComponents('userInfo'); }, 4000)
 
-            view.showComponents('userInfo')
-        } catch (err) { 
+        } catch (err) {
             view.setText(config.MESSAGE_ERROR_ID, err.message || "Register failed!")
         }
 
@@ -29,18 +30,21 @@ controller.logIn = async function (logInInfo) {
             if (!result.user.emailVerified) {
                 throw new Error('Please verify email first')
             } else {
-                firebase.firestore().collection('users').get().then(function (snapshot) {
-                    snapshot.docs.forEach(function (doc) {
-                        let type = doc.data().type
-                        let email = doc.data().owner
-                        if ( type == "DEV" && email ==firebase.auth().currentUser.email) {
-                            console.log('dev')
-                        }
-                        else if (type == "employer" && email ==firebase.auth().currentUser.email) {
-                            console.log('employer')
-                        }
+                firebase.firestore().collection('users')
+                    .where('owner', '==', firebase.auth().currentUser.email)
+                    .get().then(function (snapshot) {
+                        snapshot.docs.forEach(function (doc) {
+                            let type = doc.data().type
+                            console.log(type)
+                            let email = doc.data().owner
+                            if (type == "DEV" && email == firebase.auth().currentUser.email) {
+                                view.showComponents('jobList')
+                            }
+                            else if (type == "employer" && email == firebase.auth().currentUser.email) {
+                                console.log('employer')
+                            }
+                        })
                     })
-                })
             }
         } catch (err) {
             view.setText(config.MESSAGE_ERROR_ID, err.message || "Log in failed!")
@@ -48,20 +52,4 @@ controller.logIn = async function (logInInfo) {
     }
 }
 
-controller
 
-// controller.initAuth = function() {
-//     view.showComponents('logIn')
-    // firebase.auth().onAuthStateChanged(async function(user) {
-    //     if(user && user.emailVerified) {
-    //         console.log('login-x')
-    //         // to do             
-    //         models.logIn(user)
-    //     } else {
-    //         if(user) {
-    //             await firebase.auth().signOut()
-    //         }
-    //         view.showComponents('logIn')
-    //     }
-    // })
-// }

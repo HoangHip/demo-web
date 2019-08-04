@@ -102,65 +102,76 @@ view.userInfo = function myFunction() {
         var list = document.getElementById('user-form')
         if (x.value == 'employer') {
             let html = `<div class="form-group">
-                    <input type="text" class="form-control" name="companyname" placeholder="Company name" required>
+                    <input type="text" class="form-control user-input" name="companyname" placeholder="Company name" style="width:368px;" required>
                     <div></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email" required>
+                        <input type="text" class="form-control user-input" name="email" placeholder="Email" style="width:368px;" required>
                         <div></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="introduction" placeholder="Introduction" required>
+                    <textarea name="introduction" class="form-control user-input" placeholder="Introduction" maxlength="1000" cols="25"
+                    rows="6" style="width:368px;"></textarea>
                         <div></div>
                     </div>
                     `
             list.innerHTML = html
         } else if (x.value == 'DEV') {
-            let html = `<div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                </div>
-                <select name="" class="custom-select" id="job-detail">
-                    <option value="">Job</option>
-                    <option value="tester">Tester</option>
-                    <option value="fullstack">Fullstack</option>
-                    <option value="frontend">Frontend</option>
-                    <option value="backend">Backend</option>
-                    <option value="game">Game</option>
-                </select>
+            let html = `                        <div class="input-group mb-3 user-input " style="width:368px;">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Current job</label>
             </div>
+            <select name="" class="custom-select" id="job-detail">
+                <option value="">Job</option>
+                <option value="tester">Tester</option>
+                <option value="fullstack">Fullstack</option>
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="game">Game</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control user-input" name="schoolname" style="width:368px;"
+                placeholder="School name" required>
+            <div></div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control user-input" name="major" style="width:368px;"
+                placeholder="Major" required>
+            <div></div>
+        </div>
+        <div class="form-group">
+            <textarea name="awards" class="form-control user-input" placeholder="Awards"
+                maxlength="1000" cols="25" rows="1" style="width:368px;"></textarea>
+            <div></div>
+        </div>
+        <div class="form-group">
+            <h6 style="margin-left:27px; font-weight: bold; color: #333333;">Experience</h6>
+            <input type="text" class="form-control user-input" name="job" style="width:368px;"
+                placeholder="Job" required>
+            <div></div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control user-input" name="company" style="width:368px;"
+                placeholder="Company" required>
+            <div></div>
+        </div>
+        <div class="date-group">
             <div class="form-group">
-                <input type="text" class="form-control" name="schoolname" placeholder="School name" required>
+                <input type="date" class="form-control user-input" name="from" value="1980-08-26">
                 <div></div>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="major" placeholder="Major" required>
+                <input type="date" class="form-control user-input" name="to" required>
                 <div></div>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="awards" placeholder="Awards" required>
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="job" placeholder="Job" required>
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="company" placeholder="Company" required>
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control" name="from" value="1980-08-26">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control" name="to" required>
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="achievements" placeholder="Achievements" required>
-                <div></div>
-            </div>
+        </div>
+        <div class="form-group">
+            <textarea name="achievements" class="form-control user-input" placeholder="Achievements"
+                maxlength="1000" cols="25" rows="2" style="width:368px;"></textarea>
+            <div></div>
+        </div>
+    </div>
             `
             list.innerHTML = html
         }
@@ -193,6 +204,7 @@ view.userInfo = function myFunction() {
                 }
             }
             firebase.firestore().collection('users').add(DEVinfo)
+            view.showComponents('logIn')
         } else {
             let employerInfo = {
                 createdAt: new Date().toISOString(),
@@ -205,6 +217,7 @@ view.userInfo = function myFunction() {
                 }
             }
             firebase.firestore().collection('users').add(employerInfo)
+            view.showComponents('logIn')
         }
     }
 }

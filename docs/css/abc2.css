@@ -1,0 +1,306 @@
+.search{
+        width: 395px;
+        height: 45px;
+        left: 200px;
+        top: 12px;
+        background: #FFFFFF;
+        border-radius: 20px;
+    }
+    
+/* .logo{
+        width: 178px;
+        height: 70px;
+        left: 33px;
+        top: 0px;
+    
+        font-family: Lobster;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 48px;
+        line-height: 60px;
+    
+        color: #FFFFFF;
+} */
+
+.header{
+        position: absolute;
+        width: 100%;
+        height: 70px;
+        left: 0px;
+        top: 0px;
+    
+        border: 1px solid #FFFFFF;
+        box-sizing: border-box;
+}
+
+.content{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 10px;
+        top: 78px;
+        background: #FFFFFF;
+        display: flex;
+        flex-wrap: wrap;
+
+}
+
+.all-cv{
+        margin: 0px 10px ;
+        width: 568px;
+        height: 617px;
+        background: #FFFFFF;
+        border: 0.5px solid #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-wrap: wrap;
+        }
+
+.cv{
+        width: 255px;
+        height: 287px;
+        background: #FCFCFC;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin : 10px;
+        display: flex;
+        flex-direction: column;
+}
+
+.screen{
+        width: 255px;
+        height: 66px;
+        left: 596px;
+        top: 99px;
+        
+        background: #10568B;
+}
+
+.screen .name{
+        width: 255px;
+        height: 14px;
+        
+        font-family: VNI-Times;
+        font-size: 9px;
+        line-height: 12px;
+        text-align: center;
+        color: #FFFFFF;
+        margin: 5px;
+        
+}
+
+.img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.image{
+        width: 73px;
+        height: 73px;
+}
+
+.all-word{
+        display: flex;
+        flex-direction: column;
+}
+
+.word1{
+        width: 153px;
+        height: 24.95px;
+        font-family: Yrsa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+}
+
+.word2{
+        width: 147px;
+        height: 40px;
+        font-family: VNI-Times;
+        font-size: 9px;
+        line-height: 12px;
+        
+        color: #757575;
+}
+
+.word3{
+        width: 238.28px;
+        height: 22.08px;
+        font-family: Yrsa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        /* identical to box height */
+        color: #000000;
+}
+
+.word4{
+        width: 232px;
+        height: 30px;
+        font-family: VNI-Times;
+        font-size: 9px;
+        line-height: 12px;
+        color: #757575;
+}
+
+
+.selector{
+        height: 40px;
+        display: flex;
+        justify-content: center;
+}
+
+.selector > button{
+        margin : 5px;
+
+}
+
+.post{
+        width: 556px;
+        height: 617px;
+
+        background: #FFFFFF;
+        border: 0.5px solid #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.head{
+        position: absolute;
+        width: 174px;
+        height: 39px;
+        left: 17px;
+        top: 3px;
+        
+        font-family: VNI-Times;
+        font-size: 24px;
+        line-height: 32px;
+        
+        color: #000000;
+}
+
+.all-post{
+        position: absolute;
+        width: 533px;
+        height: 500px;
+        left: 17px;
+        top: 51px;
+        background: #FCFCFC;
+        display: flex;
+        flex-direction: column;
+        background-color: #eee;
+        border: 1px dotted black;
+        overflow: scroll;
+        overflow-x: hidden;
+}
+
+.child-post{
+        margin: 10px 5px;
+        width: 505px;
+        height: 232px;
+
+        background: #FCFCFC;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+}
+
+.company-name{
+        font-family: VNI-Times;
+        font-size: 9px;
+        line-height: 12px;
+}
+
+.img-post{
+        width: 482.84px;
+        height: 100.24px;
+        margin: 0px auto ;
+}
+
+.all-job-detail{
+        display: flex;
+        flex-direction: column;
+}
+
+.all-job-detail > div {
+        margin: 3px;
+}
+
+.detail1{
+        width: 438.94px;
+        height: 17.72px;
+
+        font-family: Yrsa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        
+        color: #E63D2B;
+}
+
+.detail2{
+        width: 319.8px;
+        height: 12.08px;
+
+        font-family: Yrsa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        
+        color: #000000;
+}
+
+.detail3{
+        width: 307.26px;
+        height: 12.08px;
+
+        font-family: Yrsa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        
+        color: #000000;
+}
+
+.detail4{
+        width: 238.28px;
+        height: 12.08px;
+
+        font-family: Yrsa;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        
+        color: #000000;
+}
+
+.detail5{
+        width: 484.93px;
+        height: 40.28px;
+
+        font-family: VNI-Times;
+        font-size: 9px;
+        line-height: 12px;
+        
+        color: #757575;
+}
+
+.submit-post{
+        position: absolute;
+        width: 510px;
+        height: 55px;
+        left: 18px;
+        top: 549px;
+        margin-top: 5px;
+        background: #10568B;
+        border: 0.5px solid #000000;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

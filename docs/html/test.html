@@ -8,160 +8,42 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="app">
-<section class="information-container">
-    <div class="form-container">
-        <form id="form-register">
-            <div class="input-group-prepend user-input" style="width:368px;">
-                <div class="input-group mb-3 " >
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">You are</label>
+    <img src="../images/company-img.webp" alt="">
+    <div class="noti-container">
+        <div>
+            <h2>We need some your personal infomation</h2>
+            <div class="container2">
+                <div class="progress2 progress-striped2">
+                    <div class="progress-bar2">
                     </div>
-                    <select name="" class="custom-select" id="user-detail" onclick="myFunction()">
-                        <option value="DEV">DEV</option>
-                        <option value="employer">Employer</option>
-                    </select>
+                </div>
+            </div>
+            <h1 id="div2">Finished!!</h1>
+        </div>
+    </div>
 
-                </div>
-            </div>
-            <div id="user-form">
-                <div class="input-group mb-3 user-input " style="width:368px;">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Current job</label>
-                    </div>
-                    <select name="" class="custom-select" id="job-detail">
-                        <option value="">Job</option>
-                        <option value="tester">Tester</option>
-                        <option value="fullstack">Fullstack</option>
-                        <option value="frontend">Frontend</option>
-                        <option value="backend">Backend</option>
-                        <option value="game">Game</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="schoolname"  style="width:368px;" placeholder="School name" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="major" style="width:368px;" placeholder="Major" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="awards" style="width:368px;" placeholder="Awards" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="job" style="width:368px;" placeholder="Job" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="company" style="width:368px;" placeholder="Company" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="date" class="form-control user-input" name="from" style="width:368px;" value="1980-08-26">
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="date" class="form-control user-input" name="to" style="width:368px;" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="achievements" style="width:368px;" placeholder="Achievements" required>
-                    <div></div>
-                </div>
-            </div>
-                <div class="form-footer">
-                    <button type="submit" id="form-info-btn">Submit</button>
-                </div>
-        </form>
-    </div>
-</section>
-    </div>
     <script>
-        function myFunction(browser) {
-            var browser = document.getElementById("user-detail").value;
-            console.log(browser)
-            var list = document.getElementById('user-form')
-            if (browser == 'employer') {
-
-                let html = `<div class="form-group">
-                    <input type="text" class="form-control" name="companyname" placeholder="Company name">
-                    <div></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
-                        <div></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="introduction" placeholder="Introduction">
-                        <div></div>
-                        </div>
-                            `
-                list.innerHTML = html
-            } else {
-                let html = `<div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                </div>
-                <select name="" class="custom-select" id="job-detail">
-                    <option value="">Job</option>
-                    <option value="tester">Tester</option>
-                    <option value="fullstack">Fullstack</option>
-                    <option value="frontend">Frontend</option>
-                    <option value="backend">Backend</option>
-                    <option value="game">Game</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="schoolname" placeholder="School name">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="major" placeholder="Major">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="awards" placeholder="Awards">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="job" placeholder="Job">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="company" placeholder="Company">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control" name="from" value="1980-08-26">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control" name="to">
-                <div></div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="achievements" placeholder="Achievements">
-                <div></div>
-            </div>
-                list.innerHTML = html
-                `
-            }
-        }
+    $(document).ready(function(){
+        $().click(function(){
+            $("#div2").show();
+        })
+        $("input[value='an']").click(function(){
+            $("#div2").hide();
+        })
+    })
     </script>
 </body>
 

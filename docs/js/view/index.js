@@ -4,6 +4,10 @@ view.loading = function () {
     document.getElementById('app').innerHTML = components.loading
 }
 
+view.noti = function() {
+  document.getElementById('app').innerHTML = components.noti
+}
+
 view.showComponents = function (name) {
 
   let viewHandler = view[name]

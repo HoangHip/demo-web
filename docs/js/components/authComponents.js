@@ -81,11 +81,11 @@ components.userInfo = `
     <div class="form-container">
         <form id="form-register">
             <div class="input-group-prepend user-input" style="width:368px;">
-                <div class="input-group mb-3 " >
+                <div class="input-group mb-3 ">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">You are</label>
                     </div>
-                    <select name="" class="custom-select" id="user-detail" >
+                    <select name="" class="custom-select" id="user-detail">
                         <option value="DEV">DEV</option>
                         <option value="employer">Employer</option>
                     </select>
@@ -107,41 +107,50 @@ components.userInfo = `
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control user-input" name="schoolname"  style="width:368px;" placeholder="School name" required>
+                    <input type="text" class="form-control user-input" name="schoolname" style="width:368px;"
+                        placeholder="School name" required>
                     <div></div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control user-input" name="major" style="width:368px;" placeholder="Major" required>
+                    <input type="text" class="form-control user-input" name="major" style="width:368px;"
+                        placeholder="Major" required>
                     <div></div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control user-input" name="awards" style="width:368px;" placeholder="Awards" required>
+                    <textarea name="awards" class="form-control user-input" placeholder="Awards"
+                        maxlength="1000" cols="25" rows="1" style="width:368px;"></textarea>
                     <div></div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control user-input" name="job" style="width:368px;" placeholder="Job" required>
+                    <h6 style="margin-left:27px; font-weight: bold; color: #333333;">Experience</h6>
+                    <input type="text" class="form-control user-input" name="job" style="width:368px;"
+                        placeholder="Job" required>
                     <div></div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control user-input" name="company" style="width:368px;" placeholder="Company" required>
+                    <input type="text" class="form-control user-input" name="company" style="width:368px;"
+                        placeholder="Company" required>
                     <div></div>
                 </div>
-                <div class="form-group">
-                    <input type="date" class="form-control user-input" name="from" style="width:368px;" value="1980-08-26">
-                    <div></div>
+                <div class="date-group">
+                    <div class="form-group">
+                        <input type="date" class="form-control user-input" name="from" value="1980-08-26">
+                        <div></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control user-input" name="to" required>
+                        <div></div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="date" class="form-control user-input" name="to" style="width:368px;" required>
-                    <div></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control user-input" name="achievements" style="width:368px;" placeholder="Achievements" required>
+                    <textarea name="achievements" class="form-control user-input" placeholder="Achievements"
+                        maxlength="1000" cols="25" rows="2" style="width:368px;"></textarea>
                     <div></div>
                 </div>
             </div>
-                <div class="form-footer">
-                    <button type="submit" id="form-info-btn">Submit</button>
-                </div>
+            <div class="form-footer">
+                <button type="submit" id="form-info-btn">Submit</button>
+            </div>
         </form>
     </div>
 </section>

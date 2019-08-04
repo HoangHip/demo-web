@@ -1,7 +1,13 @@
 const models = {
     authUser: null,
+    employerUser: null,
+
+    jobList: [],
+    jobDetail: null,
+
+    authUser: null,
     conversations: null,
-    currentActiveConversation: null
+    currentActiveConversations: null
 }
 
 

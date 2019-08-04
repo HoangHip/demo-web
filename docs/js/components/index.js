@@ -1,18 +1,36 @@
 const components = {
-    // // register
-    // register: `a long string`,
-    // // login 
-    // login: `another long string`,
-    // // ..
-    // alert : function () {
-    //     alert("Hello from components")
-    //     //this == components
-    // }
+
 }
 
-// components.register ~ form register
-// ${} lồng biến trong string 
 
+components.noti = `
+<div class="noti-container">
+        <div>
+            <h1>Almost done!</h1>
+            <h2>We need some your personal infomation</h2>
+            <div class="container">
+                <div class="progress progress-striped">
+                    <div class="progress-bar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`
+// components.noti-done = `
+// <div class="noti-container">
+//         <div>
+//             <h1>Finished</h1>
+//             <h2>We need some your personal infomation</h2>
+//             <div class="container">
+//                 <div class="progress progress-striped">
+//                     <div class="progress-bar">
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// `
 
 components.loading = `
 <svg width="300" height="120" id="clackers">
