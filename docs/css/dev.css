@@ -42,10 +42,10 @@
     font-size: 0.8rem;
 }
 
-.card hr {
+#card-hr {
     margin: 0px;
     width: 70%;
-    margin: auto
+    margin: auto;
 }
 
 .chat-screen {

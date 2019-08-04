@@ -1,6 +1,6 @@
 models.loadConversations = function (email) {
     firebase.firestore()
-        .collection('convesations')
+        .collection('conversations')
         .where('users', 'array-contains', email)
         .orderBy('upToDate')
         .onSnapshot((snapshot) => {
@@ -16,7 +16,7 @@ models.loadConversations = function (email) {
                 console.log(models.conversations[1])
 
                 if (models.conversations) {
-                    models.setCurrentActiveConversation(model.conversations[0])
+                    models.setCurrentActiveConversation(models.conversations[0])
                 }
 
             } else {
@@ -30,8 +30,8 @@ models.loadConversations = function (email) {
                             return cvst.id == conversation.id
                         })
                         if (foundIndex >= 0) {
-                            model.conversations.splice(foundIndex, 1) // delete the element of array
-                            model.conversations.unshift(conversation) // add element to the first of array
+                            models.conversations.splice(foundIndex, 1) // delete the element of array
+                            models.conversations.unshift(conversation) // add element to the first of array
                         }
 
 
@@ -54,7 +54,7 @@ models.loadConversations = function (email) {
                 }
 
             }
-            view.listConversations(model.conversations)
+            view.listConversations(models.conversations)
         })
 }
 
@@ -77,7 +77,7 @@ models.createMessage = function (content) {
     }
 
     firebase.firestore()
-        .collection('convesations')
+        .collection('conversations')
         .doc(models.currentActiveConversations.id)
         .update({
             messages: firebase.firestore.FieldValue.arrayUnion(message),

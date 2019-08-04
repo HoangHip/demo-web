@@ -21,14 +21,17 @@ models.loadJobs = function () {
 
 // user-collection
 models.loadUser = function (name) {
-    firebase.firestore()
+    return new Promise (function(solve, reject) {
+        firebase.firestore()
         .collection('users')
         .where('informations.company_name', '==', name)
         .get().then((snapshot) => {
             let docs = snapshot.docs
             if (docs) {
-                models.employerUser = docs[0].data()
+                // models.employerUser = docs[0].data()
+                solve(docs[0].data())
             }
         })
+    })
 }
 

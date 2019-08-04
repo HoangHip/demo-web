@@ -1,11 +1,7 @@
 view.chat = function () {
     document.getElementById('app').innerHTML = components.chat
-    let user = {
-        email: 'chumanhhailtt@gmail.com',
-        pasword: 'hahaha'
-    }
-    model.login(user)
-    model.loadConversations(user.email)
+    models.logIn(firebase.auth().currentUser)
+    models.loadConversations(firebase.auth().currentUser.email)
 
     let profileBtn = document.getElementById('profile')
     let messagesBtn = document.getElementById('messages')
@@ -30,7 +26,7 @@ view.chat = function () {
         e.preventDefault()
         let content = form.message.value
         form.reset()
-        model.createMessage(content)
+        models.createMessage(content)
     }
 }
 
@@ -38,7 +34,7 @@ view.addMessage = function (messageInfo) {
     if (messageInfo.owner && messageInfo.content) {
         let className = 'chat-message'
 
-        if (messageInfo.owner == model.authUser.email) {
+        if (messageInfo.owner == models.authUser.email) {
             className += ' your'
         }
 
@@ -72,7 +68,7 @@ view.listConversations = function (conversations) {
     if (conversations) {
         for (let conversation of conversations) {
             for (let user of conversation.users_Info) {
-                if (user.email != model.authUser.email) {
+                if (user.email != models.authUser.email) {
                     let html = `
                     <div id="${conversation.id}">
                         <span>${user.name}</span>
@@ -96,7 +92,7 @@ view.listConversations = function (conversations) {
                     oldLi[0].classList.remove('active-conversation')
                 }
 
-                model.setCurrentActiveConversation(conversation)
+                models.setCurrentActiveConversation(conversation)
                 view.setDetails(conversation)
                 li.classList.add('active-conversation')
             }
