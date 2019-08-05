@@ -91,7 +91,6 @@ view.employer = function (docs) {
 
 
     const add_post = (post, id, applicant) => {
-        console.log(id)
         let html = `
     <div class="child-post card" id ="${id}">
         <div class="company-name d-flex justify-content-center">${post.company_name}</div>
@@ -110,49 +109,61 @@ view.employer = function (docs) {
 
         setTimeout(() => {
             let job = document.getElementById(id)
-            job.onclick = function (e) {
-                console.log('ss')
+            job.onclick = async function (e) {
+                document.getElementById('all-cv').innerHTML = ''
+                console.log(id)
+
                 e.preventDefault()
-                let b = []
-                firebase.firestore()
-                    .collection('posts')
-                    .get().then((snapshot) => {
-                        console.log(snapshot.docs)
-                        let docs = snapshot.docs
-                        docs.forEach((doc) => {
-                            if (doc) {
-                                b.push(doc.data().applicant)
-                                console.log(doc.data().applicant)
-                            }
-                        })
-                    })
-                for (i of b) {
+                // let b = []
+                // haha = function () {
+                //     return new Promise(function (solve, reject) {
+                //         firebase.firestore()
+                //             .collection('posts')
+                //             // .where('id', '==', id)
+                //             .get().then((snapshot) => {
+                //                 console.log(snapshot.docs)
+                //                 let docs = snapshot.docs
+                //                 docs.forEach((doc) => {
+                //                     if (doc.data().applicant[0]) {
+                //                         console.log(doc.data().applicant)
+                //                         b.push(doc.data().applicant)
+                //                     }
+                //                 })
+                //                 console.log(b[0])
+                //                 solve(docs)
+                //             })
+                //     })
+                // }
+                // let hehe = await haha()
+
+                for (i of applicant) {
                     firebase.firestore()
                         .collection('users')
                         .where('owner', '==', i)
                         .get().then((snapshot) => {
+                            console.log('ok')
                             let user = snapshot.docs[0].data()
                             let allCv = document.getElementById('all-cv')
                             let html = `
-                                <div class="card">
-                                    <h6 class="mb-0">${user.owner}</h6>
-                                    <hr id="card-hr">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-danger">${user.informations.job}</h5>
-                                        <h6 class="text-info">Experience</h6>
-                                        <p class="card-text">Company: ${user.informations.experience.company}</p>
-                                        <p class="card-text">From: ${user.informations.experience.from} to ${user.informations.experience.to}</p>
-                                        <p class="card-text">Job: ${user.informations.experience.job}</p>
-                                        <h6 class="text-info">Education</h6>
-                                        <p class="card-text">School name:${user.informations.education.schoolname}</p>
+                                    <div class="card">
+                                        <h6 class="mb-0">${user.owner}</h6>
+                                        <hr id="card-hr">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-danger">${user.informations.job}</h5>
+                                            <h6 class="text-info">Experience</h6>
+                                            <p class="card-text">Company: ${user.informations.experience.company}</p>
+                                            <p class="card-text">From: ${user.informations.experience.from} to ${user.informations.experience.to}</p>
+                                            <p class="card-text">Job: ${user.informations.experience.job}</p>
+                                            <h6 class="text-info">Education</h6>
+                                            <p class="card-text">School name:${user.informations.education.schoolname}</p>
+                                        </div>
+                                        <div class="selector">
+                                            <button type="button" class="btn btn-primary btn-sm ">Accept</button>
+                                            <button type="button" class="btn btn-danger btn-sm ">Deny</button>
+                                            <button type="button" class="btn btn-info btn-sm ">More Detail</button>
+                                        </div>
                                     </div>
-                                    <div class="selector">
-                                        <button type="button" class="btn btn-primary btn-sm ">Accept</button>
-                                        <button type="button" class="btn btn-danger btn-sm ">Deny</button>
-                                        <button type="button" class="btn btn-info btn-sm ">More Detail</button>
-                                    </div>
-                                </div>
-                                            `
+                                                `
 
                             allCv.innerHTML += html
                         })
@@ -170,6 +181,7 @@ view.employer = function (docs) {
             const doc = change.doc
             if (change.type == 'added') {
                 add_post(doc.data(), doc.id, doc.data().applicant)
+                console.log(doc.data().applicant)
             }
         })
     })
