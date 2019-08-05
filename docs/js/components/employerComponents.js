@@ -38,9 +38,13 @@ components.employer = `
                 </div>
             </div>
     </div>
-    <div class="all-cv">
+    <div class="cv-container">
+        <div class="head">Applicant</div>
+        <div id="all-cv">
             
+        </div>
     </div>
+    
 </div>
 `
 

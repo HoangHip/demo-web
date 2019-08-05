@@ -90,7 +90,8 @@ view.employer = function (docs) {
 
 
 
-    const add_post = (post, id) => {
+    const add_post = (post, id, applicant) => {
+        console.log(id)
         let html = `
     <div class="child-post card" id ="${id}">
         <div class="company-name d-flex justify-content-center">${post.company_name}</div>
@@ -106,7 +107,59 @@ view.employer = function (docs) {
     </div>
     `
         all_post.innerHTML += html
-        
+
+        setTimeout(() => {
+            let job = document.getElementById(id)
+            job.onclick = function (e) {
+                console.log('ss')
+                e.preventDefault()
+                let b = []
+                firebase.firestore()
+                    .collection('posts')
+                    .get().then((snapshot) => {
+                        console.log(snapshot.docs)
+                        let docs = snapshot.docs
+                        docs.forEach((doc) => {
+                            if (doc) {
+                                b.push(doc.data().applicant)
+                                console.log(doc.data().applicant)
+                            }
+                        })
+                    })
+                for (i of b) {
+                    firebase.firestore()
+                        .collection('users')
+                        .where('owner', '==', i)
+                        .get().then((snapshot) => {
+                            let user = snapshot.docs[0].data()
+                            let allCv = document.getElementById('all-cv')
+                            let html = `
+                                <div class="card">
+                                    <h6 class="mb-0">${user.owner}</h6>
+                                    <hr id="card-hr">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-danger">${user.informations.job}</h5>
+                                        <h6 class="text-info">Experience</h6>
+                                        <p class="card-text">Company: ${user.informations.experience.company}</p>
+                                        <p class="card-text">From: ${user.informations.experience.from} to ${user.informations.experience.to}</p>
+                                        <p class="card-text">Job: ${user.informations.experience.job}</p>
+                                        <h6 class="text-info">Education</h6>
+                                        <p class="card-text">School name:${user.informations.education.schoolname}</p>
+                                    </div>
+                                    <div class="selector">
+                                        <button type="button" class="btn btn-primary btn-sm ">Accept</button>
+                                        <button type="button" class="btn btn-danger btn-sm ">Deny</button>
+                                        <button type="button" class="btn btn-info btn-sm ">More Detail</button>
+                                    </div>
+                                </div>
+                                            `
+
+                            allCv.innerHTML += html
+                        })
+                }
+            }
+
+        }, 500);
     }
 
 
@@ -116,13 +169,41 @@ view.employer = function (docs) {
         snapshot.docChanges().forEach(change => {
             const doc = change.doc
             if (change.type == 'added') {
-                add_post(doc.data(), doc.id)
-                // models.applicantList.push(doc.data().applicant)
+                add_post(doc.data(), doc.id, doc.data().applicant)
             }
         })
     })
-    // view.cvList = function () {
-    //     document.getElementById('all-cv').innerHTML = ''
-    //     db.collection('users').where()
-    // }
 }
+
+// view.cvList = function (a) {
+//     let userInfo = null
+//     db.collection('users')
+//         .where('owner', '==', a)
+//         .get().then((snapshot) => {
+//             let z = snapshot.docs
+//             userInfo = z[0].data()
+//             let allCv = document.getElementById('all-cv')
+//             let html = `
+//                             <div class="card">
+//                                 <h6 class="mb-0">${userInfo.owner}</h6>
+//                                 <hr id="card-hr">
+//                                 <div class="card-body">
+//                                     <h5 class="card-title text-danger">${userInfo.informations.job}</h5>
+//                                     <h6 class="text-info">Experience</h6>
+//                                     <p class="card-text">Company: ${userInfo.informations.experience.company}</p>
+//                                     <p class="card-text">From: ${userInfo.informations.experience.from} to ${userInfo.informations.experience.to}</p>
+//                                     <p class="card-text">Job: ${userInfo.informations.experience.job}</p>
+//                                     <h6 class="text-info">Education</h6>
+//                                     <p class="card-text">School name:${userInfo.informations.education.schoolname}</p>
+//                                 </div>
+//                                 <div class="selector">
+//                                     <button type="button" class="btn btn-primary btn-sm ">Accept</button>
+//                                     <button type="button" class="btn btn-danger btn-sm ">Deny</button>
+//                                     <button type="button" class="btn btn-info btn-sm ">More Detail</button>
+//                                 </div>
+//                             </div>
+//             `
+
+//             allCv.innerHTML += html
+//         })
+// }
