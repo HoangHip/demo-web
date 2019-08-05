@@ -4,8 +4,8 @@ const models = {
 
     jobList: [],
     jobDetail: null,
+    applicantList: [],
 
-    authUser: null,
     conversations: null,
     currentActiveConversations: null
 }

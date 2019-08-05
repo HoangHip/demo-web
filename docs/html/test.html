@@ -21,30 +21,18 @@
 </head>
 
 <body>
-    <img src="../images/company-img.webp" alt="">
-    <div class="noti-container">
-        <div>
-            <h2>We need some your personal infomation</h2>
-            <div class="container2">
-                <div class="progress2 progress-striped2">
-                    <div class="progress-bar2">
-                    </div>
-                </div>
+    <div class="child-post card" id ="${id}">
+        <div class="company-name d-flex justify-content-center">${post.company_name}</div>
+            <div class="img-post">
             </div>
-            <h1 id="div2">Finished!!</h1>
+            <div class="card-body">
+                <h5 class="card-title text-danger">${post.content.title}</h5>
+                <h6 class="text-info">${post.content.salary}</h6>
+                <h6 class="text-info">${post.content.location}</h6>
+                <p class="card-text">${post.content.describe}</p>
+            </div>
         </div>
     </div>
-
-    <script>
-    $(document).ready(function(){
-        $().click(function(){
-            $("#div2").show();
-        })
-        $("input[value='an']").click(function(){
-            $("#div2").hide();
-        })
-    })
-    </script>
 </body>
 
 </html>

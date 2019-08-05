@@ -117,7 +117,8 @@ view.userInfo = function myFunction() {
                     `
             list.innerHTML = html
         } else if (x.value == 'DEV') {
-            let html = `                        <div class="input-group mb-3 user-input " style="width:368px;">
+            let html = `                        
+            <div class="input-group mb-3 user-input " style="width:368px;">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Current job</label>
             </div>
@@ -222,31 +223,7 @@ view.userInfo = function myFunction() {
     }
 }
 
-// view.employerInfo = function() {
-//     document.getElementById('app').innerHTML = components.userInfo
 
-//     let btn = document.getElementById('form-info-btn')
-//     let type = document.getElementById('x').value
-//     view.showComponents('employerInfo')
-//     btn.onclick = function (e) {
-//         e.preventDefault()
-//         let type = document.getElementById("x").value
-//         let form = document.getElementById(config.FORM_REGISTER_ID)
-//         let x = document.getElementById('job-detail')
-//         let employerInfo = {
-//             createdAt: new Date().toISOString(),
-//             owner: firebase.auth().currentUser.email,
-//             type: type,
-//             informations: {
-//                 company_name: form.companyname.value,
-//                 email: form.email.value,
-//                 introductions: form.introduction.value
-//             }
-//         }
-//         firebase.firestore().collection('users').add(employerInfo)
-//     }
-
-// }
 
 function validateRegisterInfo(registerInfo) {
     return registerInfo.email

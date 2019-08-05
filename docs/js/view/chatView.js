@@ -2,7 +2,7 @@ view.chat = function () {
     document.getElementById('app').innerHTML = components.chat
     models.logIn(firebase.auth().currentUser)
     models.loadConversations(firebase.auth().currentUser.email)
-
+    view.userName()
     let profileBtn = document.getElementById('profile')
     let messagesBtn = document.getElementById('messages')
     let signOutBtn = document.getElementById('sign-out')
@@ -15,10 +15,22 @@ view.chat = function () {
         view.showComponents('chat')
     }
     signOutBtn.onclick = function () {
-        // firebase.auth().signOut()
+        firebase.auth().signOut()
     }
     homeBtn.onclick = function () {
-        view.showComponents('jobList')
+        firebase.firestore().collection('users')
+            .where('owner', '==', firebase.auth().currentUser.email)
+            .get().then(function (snapshot) {
+                snapshot.docs.forEach(function (doc) {
+                    let type = doc.data().type
+                    if (type == "DEV") {
+                        view.showComponents('jobList')
+                    }
+                    else if (type == "employer") {
+                        view.showComponents('employer')
+                    }
+                })
+            })
     }
 
     let form = document.getElementById('form-chat')

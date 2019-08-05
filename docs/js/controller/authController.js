@@ -35,13 +35,12 @@ controller.logIn = async function (logInInfo) {
                     .get().then(function (snapshot) {
                         snapshot.docs.forEach(function (doc) {
                             let type = doc.data().type
-                            console.log(type)
                             let email = doc.data().owner
                             if (type == "DEV" && email == firebase.auth().currentUser.email) {
                                 view.showComponents('jobList')
                             }
                             else if (type == "employer" && email == firebase.auth().currentUser.email) {
-                                console.log('employer')
+                                view.showComponents('employer')
                             }
                         })
                     })

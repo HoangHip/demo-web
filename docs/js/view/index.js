@@ -16,6 +16,12 @@ view.showComponents = function (name) {
   }
 }
 
+view.userName = function () {
+  let html = `
+  ${firebase.auth().currentUser.displayName}
+  `
+  document.getElementById('navbarDropdown').innerHTML = html
+}
 
 view.setText = function (id, message) {
     document.getElementById(id).innerText = message

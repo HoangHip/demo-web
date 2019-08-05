@@ -14,7 +14,7 @@ components.jobList = `
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                        User-name
+
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#" id="profile">Profile</a>

@@ -19,6 +19,7 @@ models.loadJobs = function () {
         })
 }
 
+
 // user-collection
 models.loadUser = function (name) {
     return new Promise (function(solve, reject) {

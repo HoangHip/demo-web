@@ -1,6 +1,7 @@
 view.jobList = function () {
     document.getElementById('app').innerHTML = components.jobList
     models.loadJobs()
+    view.userName()
 
     let profileBtn = document.getElementById('profile')
     let messagesBtn = document.getElementById('messages')
@@ -87,7 +88,7 @@ view.showJob = function (docs) {
 
 view.jobDetail = async function () {
     models.employerUser = await models.loadUser(models.jobDetail.company_name)
-
+    view.userName()
     let html = view.setJobDetail()
     document.getElementById('app').innerHTML = html
 
@@ -107,16 +108,34 @@ view.jobDetail = async function () {
 
     let applyBtn = document.getElementById('apply-btn')
     let homeBtn = document.getElementById('home-btn')
-
     homeBtn.onclick = function () {
-        view.showComponents('jobList')
+        firebase.firestore().collection('users')
+            .where('owner', '==', firebase.auth().currentUser.email)
+            .get().then(function (snapshot) {
+                snapshot.docs.forEach(function (doc) {
+                    let type = doc.data().type
+                    if (type == "DEV") {
+                        view.showComponents('jobList')
+                    }
+                    else if (type == "employer") {
+                        view.showComponents('employer')
+                    }
+                })
+            })
     }
+
     applyBtn.onclick = function () {
         // do something
 
+        models.jobDetail.applicant.push(firebase.auth().currentUser.email)
+        firebase.firestore().collection('posts')
+        .doc(models.jobDetail.id).update({
+            applicant : models.jobDetail.applicant
+        })
         alert('Apply successfully, please wait for responding!')
+    
     }
-
+    
 }
 
 view.setJobDetail = function () {
